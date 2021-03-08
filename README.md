@@ -37,3 +37,9 @@ Note: in Linux you may have permission issues in the file the created using util
 That because docker runs as root always.
 
 Changing the ownership of the files will solve this problem.
+
+but the better way is running the container as current user
+
+by adding the `--user [USER_ID]:[GROUP_ID]` tag like:
+
+  `docker-compose run --rm --user $(id -u):$(id -g) composer install`
