@@ -6,7 +6,7 @@ version: '3.8'
 services:
   #Main containers ready for deployment
   server: #Nginx server
-  build:
+    build:
       context: .
       dockerfile: dockerfiles/nginx.dockerfile
     ports:
