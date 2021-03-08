@@ -1,28 +1,28 @@
-###PHP & Mysql development environment using docker containers with laravel support
+### PHP & Mysql development environment using docker containers with laravel support
 
-##Main containers
-###Server: NGINX server with custom configurations for php
+## Main containers
+### Server: NGINX server with custom configurations for php
 Url: http://loaclhost:8000
 
-###php: php interpreter version 8.0
+### php: php interpreter version 8.0
 
-###mysql: database server
+### mysql: database server
 
 ###phpmyadmin: Web based GUI database manager
 Url: http://loaclhost:8080
 
-##Utility containers
+## Utility containers
 
-###composer: php package manager
+### composer: php package manager
 
-###artisan: laravel cli tool
+### artisan: laravel cli tool
 
-###npm: node package manager for frontend development
+### npm: node package manager for frontend development
 
-##Usage 
+## Usage 
 Just type `docker-compose up` and all will be ready
 
-###Utility containers usage
+### Utility containers usage
 
 To use it type `docker-compose run (service-name) (your-command)`
 
