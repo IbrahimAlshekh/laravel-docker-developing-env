@@ -8,7 +8,7 @@ Url: http://loaclhost:8000
 
 ### mysql: database server
 
-###phpmyadmin: Web based GUI database manager
+### phpmyadmin: Web based GUI database manager
 Url: http://loaclhost:8080
 
 ## Utility containers
@@ -22,7 +22,7 @@ Url: http://loaclhost:8080
 ## Usage 
 Just type `docker-compose up` and all will be ready
 
-### Utility containers usage
+### Utility-containers usage
 
 To use it type `docker-compose run (service-name) (your-command)`
 
@@ -32,11 +32,13 @@ to avoid unused closed containers after executing you can add `--rm` tag to the 
 
 like `docker-compose run npm install --save react`
 
-Note: in Linux you may have permission issues in the file the created using utility containers because they will owned by root user and not the logged in user.
+Note: in Linux you may have permission issues in the files that created using utility-containers because they are owned by `root` user and not the logged in user.
 
 That because docker runs as root always.
 
 Changing the ownership of the files will solve this problem.
+
+`sudo chown [username]:[usergroup] /path/to/directory`
 
 but the better way is running the container as current user
 
