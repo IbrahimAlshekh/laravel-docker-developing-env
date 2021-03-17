@@ -1,6 +1,5 @@
-#Docker-compose file for php mysql projects
+#Docker-compose file for Nginx php mysql projects
 #specific for laravel development
-#the images are ready to deploy
 version: '3.8'
 
 services:
@@ -23,7 +22,7 @@ services:
 
   #PHP 8 Interpreter
   php:
-    image: laravel:8.0
+    image: app
     build:
       context: .
       dockerfile: dockerfiles/php.dockerfile
@@ -33,14 +32,13 @@ services:
 
   #Mysql Database V8
   mysql:
-    image: library/mysql:8.0
+    image: mysql:8.0
     env_file:
       - ./environment/mysql.env
     volumes:
     - database:/var/lib/mysql
 
 #  Utility containers just for development
-
   phpmyadmin:
     image: 'phpmyadmin'
     ports:
@@ -48,32 +46,28 @@ services:
     links:
       - mysql:db
 
+  artisan:
+    image: app
+    volumes:
+      - ./src:/var/www/html
+    entrypoint: ["php", "/var/www/html/artisan"]
+    depends_on:
+      - php
+
   composer:
     image: composer:latest
     working_dir: /var/www/html
     entrypoint: [ "composer", "--ignore-platform-reqs" ]
     volumes:
-#      - code:/var/www/html # production
-      - ./src:/var/www/html # development
-
-  artisan:
-    image: artisan:dev
-    build:
-      context: .
-      dockerfile: dockerfiles/php.dockerfile
-    volumes:
-#      - code:/var/www/html # production
-      - ./src:/var/www/html # development
-    entrypoint: ["php", "/var/www/html/artisan"]
+      - ./src:/var/www/html
 
   npm:
     image: node:14
     working_dir: /var/www/html
     entrypoint: ["npm"]
     volumes:
-#     - code:/var/www/html # production
-      - ./src:/var/www/html # development
+      - ./src:/var/www/html
 
 volumes:
-#  code:
+#  code: # production
   database:
