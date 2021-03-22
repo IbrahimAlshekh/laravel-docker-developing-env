@@ -1,4 +1,4 @@
-### PHP & Mysql development environment using docker containers with laravel support
+### NGINX. PHP & Mysql development environment using docker containers with laravel support
 
 ## Main containers
 ### Server: NGINX server with custom configurations for php
@@ -30,11 +30,11 @@ Example: `docker-compose run npm install --save react`
 
 to avoid unused closed containers after executing you can add `--rm` tag to the command
 
-like `docker-compose run npm install --save react`
+like `docker-compose run --rm npm install --save react`
 
 Note: in Linux you may have permission issues in the files that created using utility-containers because they are owned by `root` user and not the logged in user.
 
-That because docker runs as root always.
+That because docker run always as root.
 
 Changing the ownership of the files will solve this problem.
 
